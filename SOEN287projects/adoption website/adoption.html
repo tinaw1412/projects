@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>dog/cat adoption</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="styles_animal.css">
+</head>
+
+<body>
+    <header>
+        <div class="logo"><!--from: https://pngimg.com/image/96618#google_vignette-->
+            <a href="#home"><img src="logo.png" alt="Adopt A Cat or Dog Paw Logo"></a>
+        </div>
+        <div class="title">
+            <h1>Adopt A Cat or Dog </h1>
+        </div>
+        <div id="datetime"></div>
+    </header>
+    <script>
+        function updateDateTime() {
+            var now = new Date();
+            var dateTime = now.toLocaleString();
+            document.getElementById("datetime").innerHTML = dateTime;
+        }
+    
+        setInterval(updateDateTime, 1000);
+    </script>
+
+    <aside class="menu">
+        <ul>
+            <li><a class="active" href="#home">Home</a></li>
+            <li><a href="#browse">Browse Available Pets</a></li>
+            <li><a href="#find">Find a Dog/Cat</a></li>
+            <li><a href="#care">Dog/Cat Care</a></li>
+            <li><a href="#giveaway">Have a Pet to Give Away</a></li>
+            <li><a href="#contact">Contact Us</a></li>
+        </ul>
+    </aside>
+
+    <main class="content">
+        <section id="home">
+            <h2>Welcome to Adopt A Cat or Dog website! We are here to help you find your dream cat/dog.</h2>
+        </section>
+        <section id="browse">
+            <h2>Browse Available Pets</h2>
+            <div class="pet">
+                <img src="dog.jpg" alt="Dog">
+                <h3>Jake</h3>
+                <p>Breed: Golden Retrievers</p>
+                <p>Age: 6 months</p>
+                <button>Interested</button>
+            </div><br>
+            <div class="pet">
+                <img src="cat.jpeg" alt="Cat">
+                <h3>Lucy</h3>
+                <p>Breed: Long Hair</p>
+                <p>Age: 2 years</p>
+                <button>Interested</button>
+            </div>
+        </section>
+            
+        <section id="find">
+            <h2>Find animal form</h2>
+            <form onsubmit="return validateFindPetForm()">
+            <fieldset id="fieldset1">
+                <legend>Animal's information</legend>
+                <label>Animal species: </label><br>
+                <label><input type="radio" id="find_cat" name="animal">Cat</label>
+                <label><input type="radio" id="find_dog" name="animal">Dog</label><br><br>
+
+                <label>Breed of dog or cat: </label><br>
+                <label><input type="checkbox" name="breed" id="find_domestic_shorthair">Domestic shorthair</label>
+                <label><input type="checkbox" name="breed" id="find_domestic_longhair">Domestic longhair</label>
+                <label><input type="checkbox" name="breed" id="find_ragdoll">Ragdoll</label>
+                <label><input type="checkbox" name="breed" id="find_siamese">Siamese</label>
+                <label><input type="checkbox" name="breed" id="find_bengal">Bengal</label>
+                <label><input type="checkbox" name="breed" id="find_persian">Persian</label><br>
+                <label><input type="checkbox" name="breed" id="find_bulldog">Bulldog</label>
+                <label><input type="checkbox" name="breed" id="find_poodle">Poodle</label>
+                <label><input type="checkbox" name="breed" id="find_husky">Husky</label>
+                <label><input type="checkbox" name="breed" id="find_labrador">Labrador</label>
+                <label><input type="checkbox" name="breed" id="find_golden_retrievers">Golden Retrievers</label>
+                <label><input type="checkbox" name="breed" id="find_corgis">Corgis</label>
+                <label><input type="checkbox" name="breed" id="find_other">Other</label>
+                <label><input type="checkbox" name="breed" id="find_nobreed">Doesn't matter</label><br><br>
+
+                <label>Preferred age of animal:</label>
+                <select name="age" id="find_age">
+                    <option>Less than 6 months</option>
+                    <option>6 months to 2 years</option>
+                    <option>3 to 6 years</option>
+                    <option>7 to 10 years</option>
+                    <option>11 to 14 years</option>
+                    <option>Above 14 years</option>
+                    <option>Doesn't matter</option>
+                </select><br><br>
+
+                <label>Preferred gender:</label>
+                <label><input type="radio" id="find_female" name="gender">Female</label>
+                <label><input type="radio" id="find_male" name="gender">Male</label>
+                <label><input type="radio" id="find_nogender" name="gender">Doesn't matter</label><br><br>
+
+                <label>Needs to get along with other dogs, other cats, small children:</label><br>
+                <label><input type="radio" id="yesneed" name="need">Yes</label>
+                <label><input type="radio" id="noneed" name="need">No</label><br>
+            </fieldset>
+            <br>
+            <input type="submit" value="Submit">
+            <input type="reset" value="Clear">
+            </form>
+        </section>
+
+        <script>
+            function validateFindPetForm() {
+                var animal = document.querySelector('input[name="animal"]:checked');
+                if (!animal) {
+                    alert("Please select animal species (Cat or Dog).");
+                    return false;
+                }
+
+                var breeds = document.querySelectorAll('input[name="breed"]:checked');
+                if (breeds.length === 0) {
+                    alert("Please select at least one breed.");
+                    return false;
+                }
+
+                var age = document.getElementById("find_age").value;
+                if (age === "default") {
+                    alert("Please select preferred age of animal.");
+                    return false;
+                }
+
+                var gender = document.querySelector('input[name="gender"]:checked');
+                if (!gender) {
+                    alert("Please select preferred gender.");
+                    return false;
+                }
+
+                var need = document.querySelector('input[name="need"]:checked');
+                if (!need) {
+                    alert("Please select if the animal needs to get along with others.");
+                    return false;
+                }
+
+                return true;
+                }
+        </script>
+
+
+
+        <section id="care">
+            <h2>Dog Care</h2>
+            <p><!--from: https://www.aspca.org/pet-care/dog-care/general-dog-care-->
+            <h4>Feeding</h4>
+
+            Puppies eight to 12 weeks old need four meals a day.
+            Feed puppies three to six months old three meals a day.
+            Feed puppies six months to one year two meals a day.
+            When your dog reaches his first birthday, one meal a day is usually enough.
+            For some dogs, including larger canines or those prone to bloat, it's better to feed two smaller meals.
+            Premium-quality dry food provides a well-balanced diet for adult dogs and may be mixed with water, broth or
+            canned food. Your dog may enjoy cottage cheese, cooked egg or fruits and vegetables, but these additions
+            should not total more than ten percent of his daily food intake.
+
+            Puppies should be fed a high-quality, brand-name puppy food (large breed puppy foods for large breeds).
+            Please limit "people food," however, because it can result in vitamin and mineral imbalances, bone and teeth
+            problems and may cause very picky eating habits and obesity. Clean, fresh water should be available at all
+            times, and be sure to wash food and water dishes frequently.
+
+            <h4>Exercise</h4>
+
+            Dogs need exercise to burn calories, stimulate their minds, and stay healthy. Individual exercise needs vary
+            based on breed or breed mix, sex, age and level of health. Exercise also tends to help dogs avoid boredom,
+            which can lead to destructive behaviors. Supervised fun and games will satisfy many of your pet's
+            instinctual urges to dig, herd, chew, retrieve and chase.
+
+            <h4>Grooming</h4>
+
+            Help keep your dog clean and reduce shedding with frequent brushing. Check for fleas and ticks daily during
+            warm weather. Most dogs don't need to be bathed more than a few times a year. Before bathing, comb or cut
+            out all mats from the coat. Carefully rinse all soap out of the coat, or the dirt will stick to soap
+            residue.
+
+            <h4>Handling</h4>
+
+            To carry a puppy or small dog, place one hand under the dog's chest, with either your forearm or other hand
+            supporting the hind legs and rump. Never attempt to lift or grab your puppy or small dog by the forelegs,
+            tail or back of the neck. If you do have to lift a large dog, lift from the underside, supporting his chest
+            with one arm and his rear end with the other.
+
+            <h4>Housing</h4>
+
+            Your pet needs a warm, quiet place to rest, away from all drafts and off the floor. A training crate or dog
+            bed is ideal, with a clean blanket or pillow placed inside. Wash the dog's bedding often. If your dog will
+            be spending a lot of time outdoors, be sure she has access to shade and plenty of cool water in hot weather,
+            and a warm, dry, covered shelter when it's cold.
+
+            <h4>Licensing and Identification</h4>
+
+            Follow your community’s licensing regulations. Be sure to attach the license to your dog’s collar. This,
+            along with an ID tag and implanted microchip or tattoo, can help secure your dog’s return should she become
+            lost.
+
+            <h4>Fleas and Ticks</h4>
+
+            Daily inspections of your dog for fleas and ticks during the warm seasons are important. Use a flea comb to
+            find and remove fleas. There are several new methods of flea and tick control. Speak to your veterinarian
+            about these and other options.
+
+            <h4>Medicines and Poisons</h4>
+
+            Never give your dog medication that has not been prescribed by a veterinarian. If you suspect that your
+            animal has ingested a poisonous substance, call your veterinarian or the ASPCA Animal Poison Control Center
+            for 24-hour animal poison information at (888) 426- 4435.
+
+            <h4>Spaying and Neutering</h4>
+
+            Female dogs should be spayed and male dogs neutered by six months of age.
+
+            <h4>Vaccinations</h4>
+
+            Your dog may benefit from receiving a number of vaccinations.
+
+            <h4>Dog Supply Checklist</h4>
+            <ul>
+                <li>Premium-quality dog food and treats</li>
+                <li>Food dish</li>
+                <li>Water bowl</li>
+                <li>Toys, toys and more toys, including safe chew toys</li>
+                <li>Brush & comb for grooming, including flea comb</li>
+                <li>Collar with license and ID tag</li>
+                <li>Leash</li>
+                <li>Carrier (for smaller dogs)</li>
+                <li>Training crate</li>
+                <li>Dog bed or box with warm blanket or towel</li>
+                <li>Dog toothbrush</li>
+            </ul>
+            <h4>The Scoop on Poop</h4>
+            Keep your dog on a leash when you are outside, unless you are in a secured, fenced-in area. If your dog
+            defecates on a neighbor's lawn, the sidewalk or any other public place, please clean it up.
+
+            <h2>Cat Care</h2>
+            <p><!--from: https://www.aspca.org/pet-care/cat-care/general-cat-care-->
+            <h4>Feeding</h4>
+
+            We recommend purchasing high-quality, brand-name kitten or cat food. Your veterinarian will be able to
+            assess your new cat or kitten and determine the best diet. Factors such as age, activity level and health
+            make a difference in what and how much a cat should eat.
+
+            Cats require taurine, an essential amino acid, for heart and eye health. The food you choose should be
+            balanced for the life stage of your cat or kitten. Properly balanced foods will contain taurine.
+            You will need to provide fresh, clean water at all times, and wash and refill your cat’s water bowls daily.
+            Treats should be no more than 5-10% of the diet.
+            Many people feed baby food to a cat or kitten who is refusing food or not feeling well Please read labels
+            carefully: If the baby food contains onion or garlic powder, your pet could be poisoned.
+            Take your pet to your veterinarian if signs of anorexia, diarrhea, vomiting or lethargy continue for more
+            than two days.
+
+            <h4>Grooming</h4>
+
+            Most cats stay relatively clean and rarely need a bath, but you should brush or comb your cat regularly.
+            Frequent brushing helps keep your cat's coat clean, reduces the amount of shedding and cuts down on the
+            incidence of hairballs.
+
+            <h4>Handling</h4>
+
+            To pick up your cat, place one hand behind the front legs and another under the hindquarters. Lift gently.
+            Never pick up a cat by the scruff of the neck or by the front legs.
+
+            <h4>Housing</h4>
+
+            Your pet should have her own clean, dry place in your home to sleep and rest. Line your cat's bed with a
+            soft, warm blanket or towel. Be sure to wash the bedding often. Please keep your cat indoors. Outdoor cats
+            do not live as long as indoor cats. Outdoor cats are at risk of trauma from cars, or from fights with other
+            cats, raccoons and free-roaming dogs. Coyotes are known to eat cats. Outdoor cats are more likely to become
+            infested with fleas or ticks, as well as contract infectious diseases.
+
+            <h4>Identification</h4>
+
+            If allowed outdoors, your cat must wear a safety collar and an ID tag. A safety collar with an elastic panel
+            will allow your cat to break loose if the collar gets caught on something. And for both indoor and outdoor
+            cats, an ID tag or an implanted microchip can help ensure that your cat is returned if he or she becomes
+            lost.
+
+            <h4>Litter Box</h4>
+
+            All indoor cats need a litter box, which should be placed in a quiet, accessible location. In a multi-level
+            home, one box per floor is recommended. Avoid moving the box unless absolutely necessary, but if you must do
+            so, move the box just a few inches per day. Keep in mind that cats won't use a messy, smelly litter box, so
+            scoop solid wastes out of the box at least once a day. Dump everything, wash with a mild detergent and
+            refill at least once a week; you can do this less frequently if using clumping litter. Don't use ammonia,
+            deodorants or scents, especially lemon, when cleaning the litter box. If your cat will not use a litterbox,
+            please consult with your veterinarian. Sometimes refusal to use a litter box is based on a medical condition
+            that required treatment.
+
+            <h4>Scratching</h4>
+
+            Cats need to scratch! When a cat scratches, the old outer nail sheath is pulled off and the sharp, smooth
+            claws underneath are exposed. Cutting your cat’s nails every two to three weeks will keep them relatively
+            blunt and less likely to harm the arms of both humans and furniture. Provide your cat with a sturdy
+            scratching post, at least three feet high. The post should also be stable enough that it won't wobble during
+            use, and should be covered with rough material such as sisal, burlap or tree bark. Many cats also like
+            scratching pads.
+
+            <h4>Health</h4>
+
+            Your cat should see the veterinarian at least once a year for an examination and annual shots, and
+            immediately if she is sick or injured.
+
+            <h4>Medicines and Poisons</h4>
+
+            Never give your cat medication that has not been prescribed by a veterinarian. If you suspect that your
+            animal has ingested a poisonous substance, call your veterinarian or the ASPCA Animal Poison Control Center
+            for 24-hour animal poison information at (888) 426-4435.
+
+            <h4>Spaying and Neutering</h4>
+
+            Female cats should be spayed and male cats neutered by five months of age.
+
+            <h4>Vaccinations</h4>
+
+            Your veterinarian will make recommendations based on your cat's age and health.
+
+            <h4>Cat Supply Checklist</h4>
+            <ul>
+                <li>Premium-brand cat food</li>
+                <li>Food dish</li>
+                <li>Water bowl</li>
+                <li>Interactive toys</li>
+                <li>Brush</li>
+                <li>Comb</li>
+                <li>Safety cat collar with ID tag</li>
+                <li>Scratching post or scratching pad</li>
+                <li>Litter box and litter</li>
+                <li>Cat carrier</li>
+                <li>Cat bed or box with warm blanket or towel</li>
+            </ul>
+            
+        </section>
+        <section id="giveaway">
+            <h2>Give away animal form</h2>
+            <fieldset id="fieldset2">
+                <legend>Animal's information</legend>
+                <label>Animal species: </label><br>
+                <label><input type="radio" id="ga_cat" name="animal">Cat</label>
+                <label><input type="radio" id="ga_dog" name="animal">Dog</label><br><br>
+
+                <label>Breed of dog or cat: </label><br>
+                <label><input type="checkbox" name="breed" id="ga_domestic_shorthair">Domestic shorthair</label>
+                <label><input type="checkbox" name="breed" id="ga_domestic_longhair">Domestic longhair</label>
+                <label><input type="checkbox" name="breed" id="ga_ragdoll">Ragdoll</label>
+                <label><input type="checkbox" name="breed" id="ga_siamese">Siamese</label>
+                <label><input type="checkbox" name="breed" id="ga_bengal">Bengal</label>
+                <label><input type="checkbox" name="breed" id="ga_persian">Persian</label><br>
+                <label><input type="checkbox" name="breed" id="ga_bulldog">Bulldog</label>
+                <label><input type="checkbox" name="breed" id="ga_poodle">Poodle</label>
+                <label><input type="checkbox" name="breed" id="ga_husky">Husky</label>
+                <label><input type="checkbox" name="breed" id="ga_labrador">Labrador</label>
+                <label><input type="checkbox" name="breed" id="ga_golden_retrievers">Golden Retrievers</label>
+                <label><input type="checkbox" name="breed" id="ga_corgis">Corgis</label>
+                <label><input type="checkbox" name="breed" id="ga_mix">Mix breed</label>
+                <label><input type="checkbox" name="breed" id="ga_other">Other</label><br><br>
+
+                <label>Age of animal:</label>
+                <select name="age" id="ga_age">
+                    <option>Less than 6 months</option>
+                    <option>6 months to 2 years</option>
+                    <option>3 to 6 years</option>
+                    <option>7 to 10 years</option>
+                    <option>11 to 14 years</option>
+                    <option>Above 14 years</option>
+                </select><br><br>
+
+                <label>Gender:</label>
+                <label><input type="radio" id="ga_female" name="gender">Female</label>
+                <label><input type="radio" id="ga_male" name="gender">Male</label><br><br>
+
+                <label>Get along with other dogs:</label><br>
+                <label><input type="radio" id="yes_doggetalong" name="dog_getalong">Yes</label>
+                <label><input type="radio" id="no_doggetalong" name="dog_getalong">No</label><br><br>
+                <label>Get along with other cats:</label><br>
+                <label><input type="radio" id="yes_catgetalong" name="cat_getalong">Yes</label>
+                <label><input type="radio" id="no_catgetalong" name="cat_getalong">No</label><br><br>
+                <label>Suitable for a family with small children:</label><br>
+                <label><input type="radio" id="yes_kidgetalong" name="kid_getalong">Yes</label>
+                <label><input type="radio" id="no_kidgetalong" name="kid_getalong">No</label><br><br>
+
+                <label>Further comments about the pet: </label><br>
+                <textarea id="comment" name="comment" rows="4" cols="50"></textarea><br><br>
+
+                <label>Current owner's first name: </label>
+                <input type="text" id="fname" name="fname"><br><br>
+                <label>Current owner's last name: </label>
+                <input type="text" id="lname" name="lname"><br><br>
+                <label>Email: </label>
+                <input type="email" id="email" name="email"><br><br>
+            </fieldset>
+            <br>
+            <input type="submit" value="Submit">
+            <input type="reset" value="Clear">
+        </section>
+        <section id="contact">
+            <h2>Contact information</h2>
+            <p>
+                Name: Jingnan Wang <br>
+                Student Id: 40282296 <br>
+                Email: jingnan1412@gmail.com <br>
+            </p>
+        </section>
+        <section id="privacy">
+            <h2>We ensure users that your information will not be sold or misused, and we are not responsible for any
+                incorrect information posted by a pet owner.</h2>
+        </section>
+    </main>
+
+    <footer>
+        <div class="privacy_disclaimer">
+            <a href="#privacy">Privacy/Disclaimer Statement</a><br><br>
+        </div>
+    </footer>
+</body>
+
+</html>
